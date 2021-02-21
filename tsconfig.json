@@ -1,0 +1,29 @@
+{
+    "compilerOptions": {
+        "target": "es5",
+        "module": "esnext",
+        "moduleResolution": "node",
+        "lib": ["DOM", "DOM.Iterable", "ESNext", "ES2017"],
+        "allowJs": true,
+        "checkJs": true,
+        "jsx": "react",
+        "baseUrl": "./src",
+        "typeRoots": ["./@types", "./node_modules/@types"],
+        "sourceMap": true,
+        "removeComments": true,
+        "isolatedModules": true,
+        "strict": true,
+        "esModuleInterop": true,
+        "skipLibCheck": true,
+        "forceConsistentCasingInFileNames": true,
+        "plugins": [
+            {
+                "name": "typescript-plugin-css-modules",
+                "options": {
+                    "classnameTransform": "dashes"
+                }
+            }
+        ]
+    },
+    "exclude": ["build", ".next", "next.config.js", "node_modules", "scripts"]
+}

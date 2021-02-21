@@ -1,0 +1,8 @@
+{
+    "sources": [
+        "./src/global/themes/tokens/typography.tokens.yml",
+        "./src/global/themes/tokens/color-light.tokens.yml",
+        "./src/components/**/*.tokens.yml",
+        "./src/components/**/*.tokens.light.yml"
+    ]
+}

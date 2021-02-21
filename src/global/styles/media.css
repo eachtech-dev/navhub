@@ -1,0 +1,2 @@
+@custom-media --viewport-tablet (max-width: 768px);
+@custom-media --viewport-mobile (max-width: 420px);

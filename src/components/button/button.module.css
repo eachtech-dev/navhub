@@ -1,0 +1,27 @@
+.button {
+    display: flex;
+    height: var(--button-height);
+    align-items: center;
+    justify-content: center;
+    padding: var(--button-padding);
+}
+
+.button_view_primary {
+    background-color: var(--color-primary);
+}
+
+.button_view_secondary {
+    background-color: var(--color-secondary);
+}
+
+.button_size_s {
+    --button-height: var(--button-size-s-height);
+}
+
+.button_size_m {
+    --button-height: var(--button-size-m-height);
+}
+
+.button_size_l {
+    --button-height: var(--button-size-l-height);
+}

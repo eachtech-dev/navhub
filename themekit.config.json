@@ -1,0 +1,24 @@
+{
+    "entry": {
+        "light": "./src/global/themes/light.theme.json"
+    },
+    "output": {
+        "css": {
+            "transforms": ["name/cti/kebab", "name/mapper"],
+            "buildPath": "./src/global/themes/presets",
+            "actions": ["process-color"],
+            "files": [
+                {
+                    "destination": "[entry]/[platform]/color.css",
+                    "format": "css/variables",
+                    "filter": "whitepaper/color"
+                },
+                {
+                    "destination": "[entry]/[platform]/root.css",
+                    "format": "css/variables",
+                    "filter": "whitepaper/root"
+                }
+            ]
+        }
+    }
+}
