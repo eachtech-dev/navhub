@@ -16,7 +16,7 @@ export type TButtonProps = {
 >;
 
 const Button = React.forwardRef<HTMLButtonElement, TButtonProps>(
-    ({ view, size, className, ...props }, ref) => {
+    ({ view = 'secondary', size = 'm', className, ...props }, ref) => {
         return (
             <button
                 {...props}
