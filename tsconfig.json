@@ -6,7 +6,7 @@
         "lib": ["DOM", "DOM.Iterable", "ESNext", "ES2017"],
         "allowJs": true,
         "checkJs": true,
-        "jsx": "react",
+        "jsx": "preserve",
         "baseUrl": "./src",
         "typeRoots": ["./@types", "./node_modules/@types"],
         "sourceMap": true,
@@ -23,7 +23,10 @@
                     "classnameTransform": "dashes"
                 }
             }
-        ]
+        ],
+        "noEmit": true,
+        "resolveJsonModule": true
     },
-    "exclude": ["build", ".next", "next.config.js", "node_modules", "scripts"]
+    "exclude": ["build", ".next", "next.config.js", "node_modules", "scripts"],
+    "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"]
 }

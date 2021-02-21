@@ -4,6 +4,7 @@
     align-items: center;
     justify-content: center;
     padding: var(--button-padding);
+    border: none;
 }
 
 .button_view_primary {
