@@ -5,8 +5,8 @@
 1. Ставим [nodejs](https://nodejs.org/en/)
 2. Ставим [yarn](https://yarnpkg.com/)
 3. Форкаем эту репу, клонируем себе
-__TODO: описать добавление ключей SSH__
-5. Добавляем upstream: `git remote add upstream git@github.com:eachtech-dev/navhub.git`
+4. Опционально [добавляем себе SSH ключи](https://only-to-top.ru/blog/tools/2019-12-08-git-ssh-windows.html), чтобы каждый раз не вводить пароль от GitHub
+5. Добавляем upstream: `git remote add upstream git@github.com:eachtech-dev/navhub.git` (или по прямой ссылке без SSH)
 
 ## Локальная разработка
 
