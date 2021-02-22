@@ -19,6 +19,7 @@
     "lint:scripts": "eslint './**/*.{js,ts,tsx}'",
     "lint:css": "stylelint 'src/**/*.css'",
     "lint:types": "tsc --noemit",
+    "lint:commits": "commitlint --to=HEAD",
     "fix": "npm-run-all fix:*",
     "fix:scripts": "eslint './**/*.{js,jsx,ts,tsx}' --fix",
     "fix:css": "stylelint 'src/**/*.css' --fix",
