@@ -1,11 +1,11 @@
 import React, { ButtonHTMLAttributes, DetailedHTMLProps } from 'react';
 
 import { classnames } from '@bem-react/classnames';
-import { cn } from '@bem-react/classname';
+import { cn } from 'utils/cn';
 
 import styles from './button.module.css';
 
-export const cnButton = cn(styles.button);
+export const cnButton = cn('button', styles);
 
 export type TButtonProps = {
     view?: 'primary' | 'secondary';

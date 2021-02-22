@@ -1,6 +1,8 @@
 button:
   padding:
-    value: 4px
+    value: 8px
+  borderRadius:
+    value: 4px;
   size:
     s:
       height:
