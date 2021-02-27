@@ -27,7 +27,7 @@
     "deps": "yarn i --no-package-lock",
     "themekit": "themekit build",
     "themekit:watch": "npm run themekit -- -w",
-    "chromatic": "npx chromatic --build-script-name build:storybook --project-token 67ef604b3c00"
+    "chromatic": "npx chromatic --build-script-name build:storybook --project-token $CHROMATIC_PROJECT_TOKEN"
   },
   "dependencies": {
     "@bem-react/classname": "^1.5.9",
