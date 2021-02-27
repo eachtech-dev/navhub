@@ -7,7 +7,7 @@ import Input from 'components/input';
 const Home: NextPage = () => {
     return (
         <Fragment>
-            <Button view="primary" size="m" className="flex">
+            <Button view="primary" size="m">
                 Click
             </Button>
             <Input />
