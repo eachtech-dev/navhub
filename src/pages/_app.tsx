@@ -15,7 +15,7 @@ class App extends NextApp<AppProps> {
                     <title>Образовательное общество &quot;Среда&quot;</title>
                     <link rel="icon" href="/favicon.ico" />
                 </Head>
-                <Component {...pageProps} />;
+                <Component {...pageProps} />
             </Fragment>
         );
     }
