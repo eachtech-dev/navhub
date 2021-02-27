@@ -7,6 +7,7 @@
 3. Форкаем эту репу, клонируем себе
 4. Опционально [добавляем себе SSH ключи](https://only-to-top.ru/blog/tools/2019-12-08-git-ssh-windows.html), чтобы каждый раз не вводить пароль от GitHub
 5. Добавляем upstream: `git remote add upstream git@github.com:eachtech-dev/navhub.git` (или по прямой ссылке без SSH)
+6. Подключаем хуки git: `yarn husky install`
 
 ## Локальная разработка
 
@@ -23,10 +24,10 @@
 
 ## Переменные окружения
 
-На данный момент никакие переменные окружения не требуются
+Для корректного прохождения CI требуется в форке установить секрет CHROMATIC_PROJECT_TOKEN.
 
 ## Флоу разработки
 
-Заходите в [канбан](https://github.com/eachtech-dev/navhub/projects/1) и переводите нужную таску в In Progress и превращаете в issue. Локально создаете ветку, в ней работаете, затем пушите в свой форк и создаете PR. В PR в описание добавляете [ссылку](https://docs.github.com/en/github/managing-your-work-on-github/linking-a-pull-request-to-an-issue) на закрываемый issue. Дожидаетесь CI и просите коллег провести code-review (сейчас мердж не блокируется, попробуем выпросить GH Pro для обязательного ревью). Мерджите только после оков от коллег и успешного CI.
+Заходите в [канбан](https://github.com/eachtech-dev/navhub/projects/1) и переводите нужную таску в In Progress и превращаете в issue. Локально создаете ветку, в ней работаете, затем пушите в свой форк и создаете PR. В PR в описание добавляете [ссылку](https://docs.github.com/en/github/managing-your-work-on-github/linking-a-pull-request-to-an-issue) на закрываемый issue. Дожидаетесь CI и просите коллег провести code-review. Просите мейнтернера заревьюить и вмерджить PR после успешного CI.
 
 На различные действия локально стоят хуки: при коммите [проверяется commit message](https://commitlint.js.org/#/) и [линтятся](https://eslint.org/) файлы, добавленные в коммит. При пуше локально проверяется весь проект. На созданные PR деплоится версия Storybook и превью статики Next льется на [Vercel](https://vercel.com). На каждый пуш в main также создаетеся production на Vercel и статика Storybook.
