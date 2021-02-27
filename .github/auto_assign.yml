@@ -1,9 +1,9 @@
 addReviewers: true
 
-addAssignees: author
+addAssignees: true
 
 reviewers:
-  - yakovlev-alex
+  - yakovlev-alexey
   - NamelessAl
   - Bromles
   - darina-trotskaya
@@ -11,4 +11,4 @@ reviewers:
 skipKeywords:
   - wip
 
-numberOfReviewers: 3
+numberOfReviewers: 2
