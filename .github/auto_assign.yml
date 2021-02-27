@@ -1,0 +1,14 @@
+addReviewers: true
+
+addAssignees: author
+
+reviewers:
+  - yakovlev-alex
+  - NamelessAl
+  - Bromles
+  - darina-trotskaya
+
+skipKeywords:
+  - wip
+
+numberOfReviewers: 3
