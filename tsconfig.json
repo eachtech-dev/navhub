@@ -27,6 +27,13 @@
         "noEmit": true,
         "resolveJsonModule": true
     },
-    "exclude": ["build", ".next", "next.config.js", "node_modules", "scripts"],
-    "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"]
+    "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+    "exclude": [
+        "build",
+        ".next",
+        "out",
+        "*.config.js",
+        "node_modules",
+        "storybook-static"
+    ]
 }

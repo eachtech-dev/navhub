@@ -5,6 +5,7 @@
     },
     "extends": [
         "eslint:recommended",
+        "plugin:jest/recommended",
         "plugin:radar/recommended",
         "plugin:react/recommended",
         "plugin:unicorn/recommended",
@@ -25,6 +26,7 @@
         "sourceType": "module"
     },
     "plugins": [
+        "jest",
         "react",
         "prettier",
         "@typescript-eslint",
@@ -38,6 +40,13 @@
         "linebreak-style": ["error", "unix"],
         "quotes": ["error", "single"],
         "semi": ["error", "always"],
+        "unicorn/filename-case": [
+            "error",
+            {
+                "case": "kebabCase",
+                "ignore": ["\\.hook\\.ts$", "\\.test\\.ts$"]
+            }
+        ],
         "unicorn/prevent-abbreviations": "off",
         "prettier/prettier": "error",
         "no-multi-spaces": 2,
