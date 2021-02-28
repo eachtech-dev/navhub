@@ -16,6 +16,13 @@ export default {
             defaultValue: 'm',
         },
     },
+    decorators: [
+        (Story) => (
+            <div style={{ padding: 5 }}>
+                <Story />
+            </div>
+        ),
+    ],
 } as Meta;
 
 const Template: Story = ({ label, ...args }) => (
