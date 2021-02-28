@@ -16,6 +16,7 @@ module.exports = {
                 },
             },
         },
+        'storybook-addon-pseudo-states',
         '@storybook/addon-essentials',
         '@storybook/addon-viewport',
         '@storybook/addon-a11y',

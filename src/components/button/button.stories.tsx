@@ -46,3 +46,33 @@ export const Small = Template.bind({});
 Small.args = {
     size: 's',
 };
+
+export const Hover = Template.bind({});
+Hover.parameters = {
+    pseudo: { hover: true },
+};
+
+export const Focus = Template.bind({});
+Focus.parameters = {
+    pseudo: { focus: true },
+};
+
+export const Active = Template.bind({});
+Active.parameters = {
+    pseudo: { active: true },
+};
+
+export const HoverActive = Template.bind({});
+HoverActive.parameters = {
+    pseudo: { active: true, hover: true },
+};
+
+export const FocusActive = Template.bind({});
+FocusActive.parameters = {
+    pseudo: { active: true, focus: true },
+};
+
+export const HoverFocusActive = Template.bind({});
+HoverFocusActive.parameters = {
+    pseudo: { active: true, hover: true, focus: true },
+};

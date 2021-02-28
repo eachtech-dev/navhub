@@ -2,4 +2,6 @@ color:
   primary:
     value: '#1e8132'
   secondary:
-    value: '#fff'
+    value: '#dedede'
+  ring:
+    value: '#fffa45a0'
