@@ -6,7 +6,9 @@ export const useToggle: TUseToggle = (defaultValue) => {
     const [value, setValue] = useState<boolean>(Boolean(defaultValue));
 
     const toggle = useCallback(() => {
-        setValue((value) => !value);
+        setValue((value) => {
+            return !value;
+        });
     }, [setValue]);
 
     return [value, toggle];

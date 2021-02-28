@@ -3,4 +3,5 @@ out
 build
 node_modules
 *.config.js
+coverage
 storybook-static
