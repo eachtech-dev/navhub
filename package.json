@@ -28,7 +28,7 @@
     "themekit": "themekit build",
     "themekit:watch": "npm run themekit -- -w",
     "test": "npm-run-all test:*",
-    "test:unit": "jest --testPathPattern=.test.{ts,tsx}$",
+    "test:unit": "jest",
     "chromatic": "npx chromatic --build-script-name build:storybook --project-token $CHROMATIC_PROJECT_TOKEN"
   },
   "dependencies": {
