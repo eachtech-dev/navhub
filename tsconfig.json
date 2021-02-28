@@ -1,32 +1,52 @@
 {
-    "compilerOptions": {
-        "target": "es5",
-        "module": "esnext",
-        "moduleResolution": "node",
-        "lib": ["DOM", "DOM.Iterable", "ESNext", "ES2017"],
-        "allowJs": true,
-        "checkJs": true,
-        "jsx": "preserve",
-        "baseUrl": "./src",
-        "typeRoots": ["./@types", "./node_modules/@types"],
-        "sourceMap": true,
-        "removeComments": true,
-        "isolatedModules": true,
-        "strict": true,
-        "esModuleInterop": true,
-        "skipLibCheck": true,
-        "forceConsistentCasingInFileNames": true,
-        "plugins": [
-            {
-                "name": "typescript-plugin-css-modules",
-                "options": {
-                    "classnameTransform": "dashes"
-                }
-            }
-        ],
-        "noEmit": true,
-        "resolveJsonModule": true
-    },
-    "exclude": ["build", ".next", "next.config.js", "node_modules", "scripts"],
-    "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"]
+  "compilerOptions": {
+    "target": "es5",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "lib": [
+      "DOM",
+      "DOM.Iterable",
+      "ESNext",
+      "ES2017"
+    ],
+    "allowJs": true,
+    "checkJs": true,
+    "jsx": "preserve",
+    "baseUrl": "./src",
+    "typeRoots": [
+      "./@types",
+      "./node_modules/@types"
+    ],
+    "sourceMap": true,
+    "removeComments": true,
+    "isolatedModules": true,
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "plugins": [
+      {
+        "name": "typescript-plugin-css-modules",
+        "options": {
+          "classnameTransform": "dashes"
+        }
+      }
+    ],
+    "noEmit": true,
+    "resolveJsonModule": true
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "src/components/stateful/stateful.test.jsx"
+  ],
+  "exclude": [
+    "build",
+    ".next",
+    "out",
+    "*.config.js",
+    "node_modules",
+    "storybook-static"
+  ]
 }

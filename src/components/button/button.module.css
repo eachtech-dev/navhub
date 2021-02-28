@@ -6,6 +6,29 @@
     padding: var(--button-padding);
     border: none;
     border-radius: var(--button-border-radius);
+    outline: none;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.button:hover {
+    box-shadow: 0 2px 0 0 #000;
+    transform: translateY(-2px);
+    transition: transform 0.1s ease-in-out, box-shadow 0.1s ease-in-out;
+}
+
+.button:focus {
+    box-shadow: var(--ring-box-shadow), 0 2px 0 0 #000;
+    transform: translateY(-2px);
+    transition: transform 0.1s ease-in-out, box-shadow 0.1s ease-in-out;
+}
+
+.button:active {
+    box-shadow: none;
+    transform: none;
+}
+
+.button:active:focus {
+    box-shadow: var(--ring-box-shadow);
 }
 
 .button_view_primary {

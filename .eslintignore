@@ -2,4 +2,6 @@ out
 .next
 build
 node_modules
-commitlint.config.js
+*.config.js
+coverage
+storybook-static

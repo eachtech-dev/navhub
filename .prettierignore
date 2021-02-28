@@ -6,3 +6,7 @@ next-env.d.ts
 # Deps
 node_modules/
 package.json
+
+# build
+coverage
+storybook-static

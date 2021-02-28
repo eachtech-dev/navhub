@@ -5,10 +5,12 @@
     },
     "extends": [
         "eslint:recommended",
+        "plugin:jest/recommended",
         "plugin:radar/recommended",
         "plugin:react/recommended",
         "plugin:unicorn/recommended",
         "plugin:jsx-a11y/recommended",
+        "plugin:react-hooks/recommended",
         "plugin:@typescript-eslint/recommended"
     ],
     "parser": "@typescript-eslint/parser",
@@ -25,6 +27,7 @@
         "sourceType": "module"
     },
     "plugins": [
+        "jest",
         "react",
         "prettier",
         "@typescript-eslint",
@@ -32,12 +35,24 @@
         "no-loops"
     ],
     "rules": {
+        "no-console": ["error", { "allow": ["warn", "error"] }],
         "no-loops/no-loops": "error",
         "react/prop-types": "off",
         "react/jsx-props-no-spreading": "off",
         "linebreak-style": ["error", "unix"],
         "quotes": ["error", "single"],
         "semi": ["error", "always"],
+        "react-hooks/exhaustive-deps": "error",
+        "react/jsx-no-bind": "warn",
+        "react/jsx-no-useless-fragment": "error",
+        "react/jsx-pascal-case": "error",
+        "unicorn/filename-case": [
+            "error",
+            {
+                "case": "kebabCase",
+                "ignore": ["\\.hook\\.ts$", "\\.test\\.ts$"]
+            }
+        ],
         "unicorn/prevent-abbreviations": "off",
         "prettier/prettier": "error",
         "no-multi-spaces": 2,
