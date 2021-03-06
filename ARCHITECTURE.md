@@ -48,6 +48,8 @@
 │       ├── chromatic.yml # GitHub Action для загрузки Storybook на Chromatic
 │       └── node-ci.yml # GitHub Action для проверки кода с помощью линтеров (yarn lint) и тестов (yarn test)
 ├── public # изображения, шрифты и т.д.
+├── scripts # вспомогательные bash, node, py и т.д. скрипты
+│   └── prepare-translations.sh # скрипт для подготовки переводов для деплоя Chromatic
 ├── @types # директория с файлами декларации типов *.d.ts для добавления типизации, например, библиотекам без поддержки типов
 │   └── index.d.ts
 ├── .env.example # пример файла с переменными окружения
