@@ -11,6 +11,8 @@ on:
 jobs:
   chromatic-deployment:
     runs-on: ubuntu-latest
+    env:
+      API_URL: https://navhub-admin.herokuapp.com
     steps:
       - uses: actions/checkout@v1
       - name: Install dependencies
