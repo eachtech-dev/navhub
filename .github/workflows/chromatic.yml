@@ -17,6 +17,8 @@ jobs:
       - uses: actions/checkout@v1
       - name: Install dependencies
         run: yarn
+      - name: Prepare translations
+        run: bash scripts/prepare-translations.sh
       - name: Publish to Chromatic
         uses: chromaui/action@v1
         with:
