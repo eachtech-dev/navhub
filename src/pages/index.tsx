@@ -13,9 +13,11 @@ const Home: NextPage = () => {
     return (
         <Sidenav>
             <Sidenav.Aside>
-                <Button view="primary" size="m">
-                    <FormattedMessage id="index.header" />
-                </Button>
+                <nav>
+                    <Button view="primary" size="m">
+                        <FormattedMessage id="index.header" />
+                    </Button>
+                </nav>
             </Sidenav.Aside>
             <main>
                 <Sidenav.Open />
