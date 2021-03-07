@@ -1,5 +1,10 @@
 import block from 'bem-css-modules';
 
+block.setSettings({
+    elementDelimiter: '-',
+    modifierDelimiter: '_',
+});
+
 type TCssModule =
     | {
           [key: string]: string;

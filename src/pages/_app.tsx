@@ -24,7 +24,7 @@ class App extends NextApp<AppProps> {
                     <link rel="icon" href="/favicon.ico" />
                 </Head>
                 <IntlProvider locale={locale} messages={translations[locale]}>
-                    <Component {...pageProps} />;
+                    <Component {...pageProps} />
                 </IntlProvider>
             </Fragment>
         );
