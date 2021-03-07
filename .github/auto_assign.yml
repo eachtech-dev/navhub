@@ -1,7 +1,5 @@
 addReviewers: true
 
-addAssignees: true
-
 reviewers:
   - yakovlev-alexey
   - NamelessAl
