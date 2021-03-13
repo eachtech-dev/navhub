@@ -46,6 +46,6 @@
 
 @media (--viewport-tablet) {
     .sidenav-open {
-        display: inherit;
+        display: unset;
     }
 }
