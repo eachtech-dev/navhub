@@ -4,14 +4,25 @@ import { GetStaticProps, NextPage } from 'next';
 
 import { fetch } from 'utils/fetch';
 import { config } from 'utils/config';
-import Button from 'components/button';
 import { TTranslations } from 'types/translations';
+
+import Button from 'components/button';
+import Sidenav from 'components/sidenav';
 
 const Home: NextPage = () => {
     return (
-        <Button view="primary" size="m">
-            <FormattedMessage id="index.header" />
-        </Button>
+        <Sidenav>
+            <Sidenav.Aside>
+                <nav>
+                    <Button view="primary" size="m">
+                        <FormattedMessage id="index.header" />
+                    </Button>
+                </nav>
+            </Sidenav.Aside>
+            <main>
+                <Sidenav.Open />
+            </main>
+        </Sidenav>
     );
 };
 

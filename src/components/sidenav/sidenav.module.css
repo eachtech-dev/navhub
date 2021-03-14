@@ -1,0 +1,51 @@
+.sidenav {
+    display: grid;
+    min-height: 100vh;
+    grid: [stack] 1fr / min-content [stack] 1fr;
+}
+
+@media (--viewport-tablet) {
+    .sidenav > * {
+        grid-area: stack;
+    }
+}
+
+.sidenav-aside {
+    --duration: 0.6s;
+
+    display: grid;
+    grid-template-columns: [nav] 2fr [escape] 1fr;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .sidenav-aside {
+        --duration: 1ms;
+    }
+}
+
+@media (--viewport-tablet) {
+    .sidenav-aside {
+        transform: translateX(-110vw);
+        transition:
+            transform var(--duration) ease,
+            visibility 0s linear var(--duration);
+        visibility: hidden;
+        will-change: transform;
+    }
+
+    .sidenav-aside:target {
+        transform: translateX(0);
+        transition: transform var(--duration) ease;
+        visibility: visible;
+    }
+}
+
+.sidenav-open {
+    display: none;
+}
+
+@media (--viewport-tablet) {
+    .sidenav-open {
+        display: unset;
+    }
+}

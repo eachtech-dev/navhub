@@ -12,6 +12,11 @@ module.exports = {
                 },
             },
         ],
-        'postcss-custom-media',
+        [
+            'postcss-custom-media',
+            {
+                preserve: false,
+            },
+        ],
     ],
 };
