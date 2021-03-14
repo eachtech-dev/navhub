@@ -21,8 +21,11 @@
 
 2. Для запуска сервера разработки [Next](https://nextjs.org/) используем `yarn dev`
 3. Для локального поднятия [Storybook](https://storybook.js.org/) пишем `yarn storybook`
-4. Для билда статики используем `yarn build`
-5. Для билда статики Storybook `yarn build:storybook`
+4. Для билда Next используем `yarn build`
+5. Для экспорта статики Next используем `yarn export`
+6. Для билда статики Storybook `yarn build:storybook`
+7. Для билда отдельной версии [Docker](https://www.docker.com/) `yarn build:docker -t <TAG>`
+8. Для запуска [композиции Docker-контейнеров](https://docs.docker.com/compose/) приложения с панелью администрирования `POSTGRES_PASSWORD=<pwd> <...> yarn start:docker`
 
 ## Переменные окружения
 

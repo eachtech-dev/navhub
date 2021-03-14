@@ -47,12 +47,17 @@
 │   └── workflows # настройка GitHub Actions
 │       ├── chromatic.yml # GitHub Action для загрузки Storybook на Chromatic
 │       └── node-ci.yml # GitHub Action для проверки кода с помощью линтеров (yarn lint) и тестов (yarn test)
+│       └── docker.yml # GitHub Action для сборки Docker контейнера и пуша его в GitHub Organization Container Registry
 ├── public # изображения, шрифты и т.д.
 ├── scripts # вспомогательные bash, node, py и т.д. скрипты
 │   └── prepare-translations.sh # скрипт для подготовки переводов для деплоя Chromatic
 ├── @types # директория с файлами декларации типов *.d.ts для добавления типизации, например, библиотекам без поддержки типов
 │   └── index.d.ts
 ├── .env.example # пример файла с переменными окружения
+├── .env.docker # переменные окружения по умолчанию для docker-compose
+├── Dockerfile # файл для сборки Docker образа приложения
+├── docker-compose.yml # композиция Docker-сервисов для деплоя приложения
+├── nginx.conf # настройка прокси на nginx
 ├── README.md
 ├── ARCHITECTURE.md
 ├── package.json
@@ -464,6 +469,111 @@ describe('useToggle', () => {
 ```ts
 export { default } from './useToggle.hook'; // реэкспорт дефолтного экспорта (самого хука)
 export * from './useToggle.hook'; // реэкспорт всего остального
+```
+
+</details>
+
+## Контейнеризация
+
+Для приложения собирается отдельный образ при помощи Dockerfile и пушится в GitHub Container Registry на каждый пуш в ветку `main`. Такая же процедура происходит для панели администрирования. Собранные образы используются в `docker-compose.yml`. Для проксирования запросов между приложениями используется прокси на [nginx](https://nginx.org/) и файл конфигурации `nginx.conf`.
+
+<details>
+  <summary>
+    Подробное описание
+  </summary>
+
+```yml
+version: '3.1'
+
+services:
+    # прокси для переадресации запросов в соответствии с запрошенным URI
+    nginx:
+        image: nginx:latest
+        # подключаем собственную настройку nginx
+        volumes:
+            - ./nginx.conf:/etc/nginx/conf.d/default.conf
+        # делаем доступным наружу порт 80
+        ports:
+            - 80:80
+        # nginx зависит от hosts, выставляемым в внутренней сети Docker при запуске других контейнеров
+        depends_on:
+            - web
+            - admin
+    # Next.js приложение
+    web:
+        image: ghcr.io/eachtech-dev/navhub:${WEB_TAG}
+        environment:
+            # используем адрес другого контейнера
+            - API_URL=http://admin:8000
+            - PORT=3000
+        ports:
+            - 3000:3000
+        # для запуска требует, чтобы контейнер с админкой был уже запущен
+        depends_on:
+            - admin
+    # бэк/панель администрирвоания
+    admin:
+        image: ghcr.io/eachtech-dev/navhub-admin:${ADMIN_TAG}
+        environment:
+            # собираем URL для подключения к базе posgres из переменных окружения
+            - DATABASE_URL=postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB}
+            - PORT=8000
+        ports:
+            - 8000:8000
+        # ждем запуска базы данных до запуска админки
+        depends_on:
+            - db
+    # база данных postgres
+    db:
+        image: postgres:11.2
+        # передаем переменные окружения для настройки БД
+        environment:
+            - POSTGRES_USER=${POSTGRES_USER}
+            - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+            - POSTGRES_DB=${POSTGRES_DB}
+        volumes:
+            # подключаем постоянный volume для сохранения данных
+            - db-data:/var/lib/postgresql/data
+        ports:
+            - 5432:5432
+
+# постоянный volume для хранения данных
+volumes:
+    db-data:
+```
+
+```bash
+server {
+    listen 80;
+    listen [::]:80;
+
+    access_log stdout;
+    error_log stderr;
+
+    # проксируем запросы по регулярному выражению
+    location ~ ^/(admin|content-manager|content-type-builder|upload|users-permissions)/ {
+      proxy_pass http://admin:8000;
+      proxy_set_header X-Real-IP $remote_addr;
+      proxy_http_version 1.1;
+      proxy_set_header Upgrade $http_upgrade;
+      proxy_set_header Connection 'upgrade';
+      proxy_set_header Host $host;
+      proxy_cache_bypass $http_upgrade;
+    }
+
+    # все остальные запросы проксируем на приложение Next.js
+    location / {
+      proxy_pass http://web:3000;
+      proxy_set_header X-Real-IP $remote_addr;
+      proxy_http_version 1.1;
+      proxy_set_header Upgrade $http_upgrade;
+      proxy_set_header Connection 'upgrade';
+      proxy_set_header Host $host;
+      proxy_cache_bypass $http_upgrade;
+    }
+
+}
+
 ```
 
 </details>
