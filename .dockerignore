@@ -1,0 +1,16 @@
+# build directories
+build
+out
+.next
+
+# deps
+node_modules
+
+# misc
+.DS_Store
+
+# logs
+*.log
+
+# local envs
+.env
