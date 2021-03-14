@@ -11,7 +11,7 @@ services:
       - web
       - admin
   web:
-    build: .
+    image: ghcr.io/eachtech-dev/navhub:latest
     environment:
       - API_URL=http://admin:8000
       - PORT=3000
