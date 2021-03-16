@@ -1,7 +1,7 @@
 import block from 'bem-css-modules';
 
 block.setSettings({
-    elementDelimiter: '-',
+    elementDelimiter: '__',
     modifierDelimiter: '_',
 });
 
