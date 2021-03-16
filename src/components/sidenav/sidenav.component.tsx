@@ -3,8 +3,8 @@ import React, { FC, HTMLProps } from 'react';
 import { classnames } from '@bem-react/classnames';
 import { cn } from 'utils/cn';
 
-import SidenavOpen from './sidenav-open';
-import SidenavAside from './sidenav-aside';
+import SidenavOpen from './__open';
+import SidenavAside from './__aside';
 
 import SidenavContext from './sidenav.context';
 
