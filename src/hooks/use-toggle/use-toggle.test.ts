@@ -3,7 +3,7 @@
  */
 
 import { renderHook, act } from '@testing-library/react-hooks';
-import useToggle from './useToggle.hook';
+import useToggle from './use-toggle.hook';
 
 describe('useToggle', () => {
     it('has false as default value if unspecified', () => {

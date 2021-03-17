@@ -19,9 +19,6 @@ const Home: NextPage = () => {
                     </Button>
                 </nav>
             </Sidenav.Aside>
-            <main>
-                <Sidenav.Open />
-            </main>
         </Sidenav>
     );
 };

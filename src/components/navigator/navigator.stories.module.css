@@ -1,0 +1,13 @@
+.navigator-stories__nav {
+    position: sticky;
+    top: 0;
+}
+
+.navigator-stories__link {
+    display: block;
+    text-decoration: none;
+}
+
+.navigator-stories__link_active {
+    text-decoration: underline;
+}

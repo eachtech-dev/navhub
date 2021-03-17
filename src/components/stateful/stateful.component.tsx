@@ -1,7 +1,7 @@
 import React, { FC, useCallback } from 'react';
 
 import Button, { TButtonProps } from 'components/button';
-import useToggle from 'hooks/useToggle';
+import useToggle from 'hooks/use-toggle';
 
 export type TStatefulComponent = Omit<TButtonProps, 'onClick' | 'ref'>;
 

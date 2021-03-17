@@ -46,14 +46,10 @@
         "react/jsx-no-bind": "warn",
         "react/jsx-no-useless-fragment": "error",
         "react/jsx-pascal-case": "error",
-        "unicorn/filename-case": [
-            "error",
-            {
-                "case": "kebabCase",
-                "ignore": ["\\.hook\\.ts$", "\\.test\\.ts$"]
-            }
-        ],
+        "unicorn/filename-case": ["error", { "case": "kebabCase" }],
         "unicorn/prevent-abbreviations": "off",
+        "unicorn/no-null": "off",
+        "radar/prefer-immediate-return": "off",
         "prettier/prettier": "error",
         "no-multi-spaces": 2,
         "no-multiple-empty-lines": ["error", { "max": 1, "maxEOF": 0 }]
