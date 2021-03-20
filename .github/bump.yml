@@ -3,7 +3,21 @@ release:
   initial-version: '0.0.1'
   tag-prefix: 'v'
   commit-note-replacers:
-    - replace-prefix: '*: '
+    - replace-prefix: 'feat: '
+      new-prefix: ''
+    - replace-prefix: 'feat!: '
+      new-prefix: ''
+    - replace-prefix: 'test: '
+      new-prefix: ''
+    - replace-prefix: 'ci: '
+      new-prefix: ''
+    - replace-prefix: 'build: '
+      new-prefix: ''
+    - replace-prefix: 'fix: '
+      new-prefix: ''
+    - replace-prefix: 'chore: '
+      new-prefix: ''
+    - replace-prefix: 'docs: '
       new-prefix: ''
 branch:
   base-branch: 'main'
@@ -14,7 +28,7 @@ categories:
     labels:
       - 'BreakingChange'
     commits:
-      - '*!:'
+      - 'feat!:'
     changes-prefix: ':warning: '
   - title: 'Changes'
     labels:
