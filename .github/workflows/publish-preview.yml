@@ -1,0 +1,69 @@
+name: Publish preview
+
+on:
+  repository_dispatch:
+    types:
+      - Preview*
+
+jobs:
+  publish-preview:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Update deployment status to in progress
+        uses: octokit/request-action@v2.x
+        with:
+          route: POST /repos/{owner}/{repo}/deployments/{deployment_id}/statuses
+          owner: ${{ github.event.repository.owner.login }}
+          repo: ${{ github.event.repository.name }}
+          deployment_id: ${{ github.event.client_payload.deployment_id }}
+          state: in_progress
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event.client_payload.sha }}
+
+      - name: Name branch
+        run: |
+          name=$(echo "${{ github.event.client_payload.folder }}")
+          git checkout -b ${name}
+
+      - name: Build and export
+        run: yarn export
+        env:
+          API_URL: ${{ secrets.API_URL }}
+
+      - name: Publish preview
+        run: |
+          yarn global add surge
+          surge --project ./out --domain $DOMAIN
+        env:
+          SURGE_LOGIN: ${{ secrets.SURGE_LOGIN }}
+          SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
+          DOMAIN: navhub-${{ github.event.client_payload.folder }}.surge.sh
+
+      - name: Update deployment status to success
+        uses: octokit/request-action@v2.x
+        with:
+          route: POST /repos/{owner}/{repo}/deployments/{deployment_id}/statuses
+          owner: ${{ github.event.repository.owner.login }}
+          repo: ${{ github.event.repository.name }}
+          deployment_id: ${{ github.event.client_payload.deployment_id }}
+          state: success
+          environment_url: navhub-${{ github.event.client_payload.folder }}.surge.sh
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - if: failure()
+        name: Update deployment status to failure
+        uses: octokit/request-action@v2.x
+        with:
+          route: POST /repos/{owner}/{repo}/deployments/{deployment_id}/statuses
+          owner: ${{ github.event.repository.owner.login }}
+          repo: ${{ github.event.repository.name }}
+          deployment_id: ${{ github.event.client_payload.deployment_id }}
+          state: failure
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
