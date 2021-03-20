@@ -32,7 +32,8 @@ jobs:
           draft: ${{ github.event.inputs.draft }}
           pre_release: ${{ github.event.inputs.pre_release }}
 
-      - name: Trigger Docker Build and Push
+      - if: (github.event.inputs.dry_run != 'true')
+        name: Trigger Docker Build and Push
         uses: peter-evans/repository-dispatch@v1
         with:
           token: ${{ secrets.DISPATCH_PAT }}
