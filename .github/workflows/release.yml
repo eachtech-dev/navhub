@@ -25,6 +25,7 @@ jobs:
           fetch-depth: 0
 
       - uses: MeilCli/bump-release-action@v1
+        id: release
         with:
           config_path: '.github/bump.yml'
           bump: ${{ github.event.inputs.bump }}
@@ -38,4 +39,4 @@ jobs:
         with:
           token: ${{ secrets.DISPATCH_PAT }}
           event-type: push-docker
-          client-payload: '{ "tag_name": "${{ steps.deployment.outputs.current_version }}"}'
+          client-payload: '{ "tag_name": "${{ steps.release.outputs.current_version }}"}'
