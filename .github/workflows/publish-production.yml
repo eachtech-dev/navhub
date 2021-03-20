@@ -16,6 +16,7 @@ jobs:
           route: POST /repos/{owner}/{repo}/deployments
           owner: ${{ github.event.repository.owner.login }}
           repo: ${{ github.event.repository.name }}
+          ref: ${{ github.ref }}
           task: deploy:production
           auto_merge: false
           required_contexts: '[]'
