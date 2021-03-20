@@ -54,7 +54,7 @@ jobs:
           repo: ${{ github.event.repository.name }}
           deployment_id: ${{ github.event.client_payload.deployment_id }}
           state: success
-          environment_url: navhub-${{ github.event.client_payload.folder }}.surge.sh
+          environment_url: http://navhub-${{ github.event.client_payload.folder }}.surge.sh
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
