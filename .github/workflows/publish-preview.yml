@@ -15,6 +15,7 @@ jobs:
           mediaType: |
             previews:
             - ant-man
+            - flash
           owner: ${{ github.event.repository.owner.login }}
           repo: ${{ github.event.repository.name }}
           deployment_id: ${{ github.event.client_payload.deployment_id }}
