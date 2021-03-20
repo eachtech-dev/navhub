@@ -1,6 +1,8 @@
 name: Publish preview
 
-on: repository_dispatch
+on:
+  repository_dispatch:
+    types: [publish-preview]
 
 jobs:
   publish-preview:

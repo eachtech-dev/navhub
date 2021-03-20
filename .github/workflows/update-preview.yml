@@ -41,6 +41,6 @@ jobs:
         name: Trigger preview build
         uses: peter-evans/repository-dispatch@v1
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.DISPATCH_PAT }}
           event-type: publish-preview
           client-payload: '{"folder": "pr${{ github.event.number }}", "sha": "${{ github.event.pull_request.head.sha }}", "deployment_id": "${{ fromJson(steps.deployment.outputs.data).id }}"}'
