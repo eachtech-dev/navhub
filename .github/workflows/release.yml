@@ -1,0 +1,29 @@
+name: Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      bump:
+        description: 'Bump type: major or minor or patch or empty string'
+        default: ''
+      dry_run:
+        description: 'Dry run, true or false'
+        default: 'false'
+      draft:
+        description: 'Draft, true or false'
+        default: 'false'
+      pre_release:
+        description: 'Pre-release, true or false'
+        default: 'false'
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: MeilCli/bump-release-action@v1
+        with:
+          config_path: '.github/bump.yml'
+          bump: ${{ github.event.inputs.bump }}
+          dry_run: ${{ github.event.inputs.dry_run }}
+          draft: ${{ github.event.inputs.draft }}
+          pre_release: ${{ github.event.inputs.pre_release }}
