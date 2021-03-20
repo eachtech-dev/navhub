@@ -1,0 +1,66 @@
+release:
+  title-prefix: 'v'
+  initial-version: '0.0.1'
+  tag-prefix: 'v'
+branch:
+  version-branch-prefix: 'v'
+  bump-version-commit-prefix: 'v'
+categories:
+  - title: 'Breaking Changes'
+    labels:
+      - 'BreakingChange'
+    commits:
+      - '*!:'
+    changes-prefix: ':warning: '
+  - title: 'Changes'
+    labels:
+      - 'Feature'
+    commits:
+      - 'feat:'
+    changes-prefix: ':gift: '
+  - title: 'Changes'
+    labels:
+      - CI/CD
+    commits:
+      - 'ci:'
+    changes-prefix: ':hammer: '
+  - title: 'Changes'
+    labels:
+      - Test
+    commits:
+      - 'test:'
+    changes-prefix: ':ledger: '
+  - title: 'Bug Fixes'
+    labels:
+      - 'Bug'
+    commits:
+      - 'fix:'
+    changes-prefix: ':ambulance: '
+  - title: 'Changes'
+    labels:
+      - 'Documentation'
+    commits:
+      - 'docs:'
+    changes-prefix: ':blue_book: '
+  - title: 'Chores'
+    labels:
+      - 'Chore'
+    skip-label: 'Development'
+    commits:
+      - 'chore:'
+    changes-prefix: ':green_book: '
+bump:
+  default: 'patch'
+  major:
+    labels:
+      - 'BreakingChange'
+    commits:
+      - '*!:'
+  minor:
+    labels:
+      - 'Feature'
+    commits:
+      - 'feat:'
+files:
+  - file-path: 'package.json'
+    line: 3
