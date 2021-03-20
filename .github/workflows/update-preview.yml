@@ -42,5 +42,5 @@ jobs:
         uses: peter-evans/repository-dispatch@v1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          event-type: 'Preview build #${{ github.event.number }}'
+          event-type: preview-${{ github.event.number }}
           client-payload: '{"folder": "pr${{ github.event.number }}", "sha": "${{ github.event.pull_request.head.sha }}", "deployment_id": "${{ fromJson(steps.deployment.outputs.data).id }}"}'
