@@ -8,16 +8,16 @@ jobs:
   publish-preview:
     runs-on: ubuntu-latest
     steps:
-      - name: Update deployment status to in progress
-        uses: octokit/request-action@v2.x
-        with:
-          route: POST /repos/{owner}/{repo}/deployments/{deployment_id}/statuses
-          owner: ${{ github.event.repository.owner.login }}
-          repo: ${{ github.event.repository.name }}
-          deployment_id: ${{ github.event.client_payload.deployment_id }}
-          state: 'in_progress'
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#       - name: Update deployment status to in progress
+#         uses: octokit/request-action@v2.x
+#         with:
+#           route: POST /repos/{owner}/{repo}/deployments/{deployment_id}/statuses
+#           owner: ${{ github.event.repository.owner.login }}
+#           repo: ${{ github.event.repository.name }}
+#           deployment_id: ${{ github.event.client_payload.deployment_id }}
+#           state: 'in_progress'
+#         env:
+#           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Checkout
         uses: actions/checkout@v2
