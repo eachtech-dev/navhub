@@ -3,7 +3,7 @@ name: Publish preview
 on:
   repository_dispatch:
     types:
-      - Preview*
+      - preview-*
 
 jobs:
   publish-preview:
