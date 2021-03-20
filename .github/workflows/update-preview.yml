@@ -18,7 +18,7 @@ jobs:
           repo: ${{ github.event.repository.name }}
           issue_number: ${{ github.event.number }}
         env:
-          GITHUB_TOKEN: ${{ secrets.PREVIEW_GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - if: contains(fromJson(steps.preview_label.outputs.data).*.name, 'preview')
         name: Create deployment
