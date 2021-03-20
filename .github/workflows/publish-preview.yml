@@ -28,6 +28,9 @@ jobs:
         run: |
           name=$(echo "${{ github.event.client_payload.folder }}")
           git checkout -b ${name}
+          
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
 
       - name: Build and export
         run: yarn export
