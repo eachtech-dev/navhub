@@ -39,7 +39,7 @@ jobs:
 
       - name: Publish preview
         run: |
-          yarn global add surge
+          yarn add surge
           surge --project ./out --domain $DOMAIN
         env:
           SURGE_LOGIN: ${{ secrets.SURGE_LOGIN }}
