@@ -1,0 +1,80 @@
+name: Publish production
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  publish-production:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create deployment
+        id: deployment
+        uses: octokit/request-action@v2.x
+        with:
+          route: POST /repos/{owner}/{repo}/deployments
+          owner: ${{ github.event.repository.owner.login }}
+          repo: ${{ github.event.repository.name }}
+          task: deploy:production
+          auto_merge: false
+          required_contexts: '[]'
+          environment: production
+          description: 'Production deployment on Surge.sh'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Update deployment status to in progress
+        uses: octokit/request-action@v2.x
+        with:
+          route: POST /repos/{owner}/{repo}/deployments/{deployment_id}/statuses
+          mediaType: |
+            previews:
+            - ant-man
+            - flash
+          owner: ${{ github.event.repository.owner.login }}
+          repo: ${{ github.event.repository.name }}
+          deployment_id: ${{ fromJson(steps.deployment.outputs.data).id }}
+          state: in_progress
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: actions/checkout@v2
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Build and export
+        run: yarn export
+
+      - name: Publish production
+        run: |
+          yarn add surge
+          yarn surge --project ./out --domain $DOMAIN
+        env:
+          SURGE_LOGIN: ${{ secrets.SURGE_LOGIN }}
+          SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
+          DOMAIN: navhub.surge.sh
+
+      - name: Update deployment status to success
+        uses: octokit/request-action@v2.x
+        with:
+          route: POST /repos/{owner}/{repo}/deployments/{deployment_id}/statuses
+          owner: ${{ github.event.repository.owner.login }}
+          repo: ${{ github.event.repository.name }}
+          deployment_id: ${{ fromJson(steps.deployment.outputs.data).id }}
+          state: success
+          environment_url: http://navhub.surge.sh
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - if: failure()
+        name: Update deployment status to failure
+        uses: octokit/request-action@v2.x
+        with:
+          route: POST /repos/{owner}/{repo}/deployments/{deployment_id}/statuses
+          owner: ${{ github.event.repository.owner.login }}
+          repo: ${{ github.event.repository.name }}
+          deployment_id: ${{ fromJson(steps.deployment.outputs.data).id }}
+          state: failure
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
