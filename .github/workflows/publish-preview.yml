@@ -15,9 +15,9 @@ jobs:
           owner: ${{ github.event.repository.owner.login }}
           repo: ${{ github.event.repository.name }}
           deployment_id: ${{ github.event.client_payload.deployment_id }}
-          state: in_progress
+          state: 'in_progress'
         env:
-          GITHUB_TOKEN: ${{ secrets.DISPATCH_PAT }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Checkout
         uses: actions/checkout@v2
