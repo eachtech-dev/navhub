@@ -33,8 +33,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.PREVIEW_GITHUB_TOKEN }}
 
-      - if: toJson(fromJson(steps.earlier_preview.outputs.data)) != '[]' && contains(fromJson(steps.preview_label.outputs.data).*.name, 'preview')
-        name: Create deployment
+      # - if: toJson(fromJson(steps.earlier_preview.outputs.data)) != '[]' && contains(fromJson(steps.preview_label.outputs.data).*.name, 'preview')
+      - name: Create deployment
         id: deployment
         uses: octokit/request-action@v2.x
         with:
