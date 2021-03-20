@@ -40,7 +40,7 @@ jobs:
       - name: Publish preview
         run: |
           yarn add surge
-          surge --project ./out --domain $DOMAIN
+          ./node_modules/surge/lib/cli.js --project ./out --domain $DOMAIN
         env:
           SURGE_LOGIN: ${{ secrets.SURGE_LOGIN }}
           SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
