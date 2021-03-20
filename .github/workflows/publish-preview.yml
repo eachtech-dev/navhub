@@ -17,7 +17,7 @@ jobs:
           deployment_id: ${{ github.event.client_payload.deployment_id }}
           state: in_progress
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.DISPATCH_PAT }}
 
       - name: Checkout
         uses: actions/checkout@v2
