@@ -39,4 +39,4 @@ jobs:
         with:
           token: ${{ secrets.DISPATCH_PAT }}
           event-type: push-docker
-          client-payload: '{ "tag_name": "${{ steps.release.outputs.current_version }}"}'
+          client-payload: '{ "tag_name": "${{ steps.release.outputs.next_version }}"}'
