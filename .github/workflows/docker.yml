@@ -35,4 +35,4 @@ jobs:
         run: docker tag ghcr.io/eachtech-dev/navhub:$TAG_NAME ghcr.io/eachtech-dev/navhub:latest
 
       - name: Push
-        run: docker push ghcr.io/eachtech-dev/navhub
+        run: docker push --all-tags ghcr.io/eachtech-dev/navhub
