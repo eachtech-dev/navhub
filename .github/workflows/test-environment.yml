@@ -1,0 +1,19 @@
+name: 'Preview'
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    environment: Preview
+    env:
+      TEST_SECRET: ${ TEST_SECRET }
+    steps:
+      - name: Test
+        run: echo $TEST_SECRET
