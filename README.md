@@ -26,7 +26,7 @@
 6. Для билда статики Storybook `yarn build:storybook`
 7. Для билда отдельной версии [Docker](https://www.docker.com/) `yarn build:docker -t <TAG>`
 8. Для запуска [композиции Docker-контейнеров](https://docs.docker.com/compose/) приложения с панелью администрирования `POSTGRES_PASSWORD=<pwd> <...> yarn start:docker`
-9. Для деплоя экспортированной статики в surge используем `yarn surge`. Статика деплоится на [https://eachtech-navhub.surge.sh](https://eachtech-navhub.surge.sh), где ее можно невозбранно просмотреть
+9. Для экспорта статики и деплоя её в surge используем `yarn surge`. Вам будет предложено указать поддомен для деплоя в терминале. Можно оставить по-умолчанию, для быстрого просмотра результата в процессе разработки
 
 ## Переменные окружения
 
