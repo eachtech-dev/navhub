@@ -4,9 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "npm-run-all --parallel start:{dev,themekit}",
-    "deploy": "npm-run-all --sequential build:{themekit,next,export} && surge --project ./out",
-    "deploy:preview": "npm-run-all --sequential build:{themekit,next,export} && surge --project ./out --domain navhub-$(uuidgen).surge.sh",
-    "deploy:production": "npm-run-all --sequential build:{themekit,next,export} && surge --project ./out --domain eachtech-navhub.surge.sh",
+    "deploy": "yarn run export && surge --project ./out",
+    "deploy:preview": "yarn run deploy --domain navhub-$(uuidgen).surge.sh",
+    "deploy:production": "yarn run deploy --domain eachtech-navhub.surge.sh",
     "storybook": "npm-run-all --parallel start:{storybook,themekit}",
     "clean": "rm -rf build && rm -rf cache && rm -rf .next && rm -rf out && rm -rf storybook-static && rm -rf coverage",
     "build": "npm-run-all --sequential build:{themekit,next}",
