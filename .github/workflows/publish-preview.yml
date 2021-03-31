@@ -36,16 +36,11 @@ jobs:
       - name: Install dependencies
         run: yarn install --frozen-lockfile
 
-      - name: Build and export
-        run: yarn export
+      - name: Build, export and publish preview
+        run: |
+          yarn run deploy --domain $DOMAIN
         env:
           API_URL: ${{ secrets.API_URL }}
-
-      - name: Publish preview
-        run: |
-          yarn add surge
-          yarn surge --project ./out --domain $DOMAIN
-        env:
           SURGE_LOGIN: ${{ secrets.SURGE_LOGIN }}
           SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
           DOMAIN: navhub-${{ github.event.client_payload.folder }}.surge.sh
