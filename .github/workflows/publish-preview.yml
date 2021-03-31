@@ -38,7 +38,6 @@ jobs:
 
       - name: Build, export and publish preview
         run: |
-          yarn add surge
           yarn run deploy --domain $DOMAIN
         env:
           API_URL: ${{ secrets.API_URL }}
