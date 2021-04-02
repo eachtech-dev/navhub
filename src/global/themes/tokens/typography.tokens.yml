@@ -2,3 +2,68 @@ typography:
   font:
     family:
       value: "Roboto, 'Segoe UI', sans-serif"
+  heading-1:
+    font:
+      family:
+        value: 'Nunito'
+      style:
+        value: normal
+      weight:
+        value: 700
+      size:
+        value: 32px
+      shorthand: Nunito normal 700 32px
+    color:
+        value: var(--color-secondary)
+  heading-2:
+    font:
+      family:
+        value: Nunito
+      style:
+        value: normal
+      weight:
+        value: 600
+      size:
+        value: 24px
+      shorthand: 
+        value: Nunito normal 600 24px
+    color: 
+      value: var(--color-secondary)
+  heading-3:
+    font:
+      family:
+        value: Nunito
+      style:
+        value: normal
+      weight:
+        value: 600
+      size:
+        value: 18px
+      shorthand: 
+        value: Nunito normal 600 18px
+    color:
+      value: var(--color-secondary)
+  paragraph:
+    font:
+      family:
+        value: Nunito
+      weight:
+        value: 400
+      size:
+        value: 18px
+      shorthand:
+        value: Nunito normal 400 18px
+    color: 
+      value: var(--color-secondary)
+  button:
+    font:
+      family:
+        value: Nunito
+      weight:
+        value: 700
+      size:
+        value: 18px
+      shorthand:
+        value: Nunito normal 700 18px
+  
+  
