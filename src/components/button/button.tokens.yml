@@ -1,8 +1,8 @@
 button:
   padding:
     value: 8px
-  borderRadius:
-    value: 4px;
+  radius:
+    value: 50px
   size:
     s:
       height:
@@ -12,4 +12,4 @@ button:
         value: 32px
     l:
       height:
-        value: 48px
+        value: 63px
