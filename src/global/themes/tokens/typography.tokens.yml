@@ -61,7 +61,7 @@ typography:
   color:
     value: var(--color-secondary)
   paragraph:
-   font:
+    font:
       family:
         value: var(--typography-font-family)
       style:
