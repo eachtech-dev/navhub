@@ -19,12 +19,14 @@ button:
     active:
       value: '#E18A5A'
   shadow:
+    size:
+      value: '0 0 0 4px'
     primary:
-      value: '0 0 0 4px var(--color-secondary)'
+      value: 'var(--button-shadow-size) var(--color-secondary)'
     secondary:
       still:
-        value: '0 0 0 4px var(--color-additional)'
+        value: 'var(--button-shadow-size) var(--color-additional)'
       hover:
-        value: '0 0 0 4px var(--button-color-hover)'
+        value: 'var(--button-shadow-size) var(--button-color-hover)'
       active:
-        value: '0 0 0 4px var(--button-color-active)'
+        value: 'var(--button-shadow-size) var(--button-color-active)'
