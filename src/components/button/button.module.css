@@ -4,6 +4,7 @@
     align-items: center;
     justify-content: center;
     padding: var(--button-padding);
+    font: var(--typography-button-shorthand);
     border: none;
     border-radius: var(--button-radius);
     outline: none;
