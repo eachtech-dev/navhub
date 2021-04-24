@@ -1,3 +1,3 @@
 ring:
-  box-shadow:
-    value: '0 0 0 3px var(--color-ring)'
+  shadow:
+    value: '0 0 0 4px #FFFFFF'
