@@ -18,7 +18,6 @@
 }
 
 .button:focus {
-    box-shadow: var(--ring-shadow);
     transform: translateY(-2px);
     transition: transform 0.1s ease-in-out, box-shadow 0.1s ease-in-out;
 }
@@ -29,12 +28,10 @@
 }
 
 .button:active:focus {
-    box-shadow: var(--ring-shadow);
     transform: none;
 }
 
 .button:hover:focus {
-    box-shadow: var(--ring-shadow);
     transform: none;
 }
 
@@ -52,12 +49,12 @@
 }
 
 .button_view_primary:focus {
-    box-shadow: var(--button-color-shadow-primary);
+    box-shadow: var(--button-shadow-primary);
 }
 
 .button_view_primary:hover:focus {
     background-color: var(--button-color-hover);
-    box-shadow: var(--button-color-shadow-primary);
+    box-shadow: var(--button-shadow-primary);
 }
 
 .button_view_primary:active:focus {
