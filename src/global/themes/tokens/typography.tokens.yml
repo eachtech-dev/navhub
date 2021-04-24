@@ -44,8 +44,8 @@ typography:
         value: var(--typography-font-size-l)
       shorthand: 
         value: var(--typography-heading2-font-family) var(--typography-heading2-font-style) var(--typography-heading2-font-weight) var(--typography-heading2-font-size)
-  color: 
-    value: var(--color-secondary)
+    color: 
+      value: var(--color-secondary)
   heading3:
     font:
       family:
@@ -58,8 +58,8 @@ typography:
         value: var(--typography-font-size-m)
       shorthand:
         value: var(--typography-heading3-font-family) var(--typography-heading3-font-style) var(--typography-heading3-font-weight) var(--typography-heading3-font-size)
-  color:
-    value: var(--color-secondary)
+    color:
+      value: var(--color-secondary)
   paragraph:
     font:
       family:
