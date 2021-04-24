@@ -5,51 +5,88 @@
     justify-content: center;
     padding: var(--button-padding);
     border: none;
-    background-color: var(--color-primary);
     border-radius: var(--button-radius);
     outline: none;
     transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
 
 .button:hover {
-    background-color: var(--color-hover);
     box-shadow: none;
     transform: translateY(-2px);
     transition: transform 0.1s ease-in-out, box-shadow 0.1s ease-in-out;
 }
 
 .button:focus {
-    background-color: var(--color-primary);
     box-shadow: var(--ring-shadow);
     transform: translateY(-2px);
     transition: transform 0.1s ease-in-out, box-shadow 0.1s ease-in-out;
 }
 
 .button:active {
-    background-color: var(--color-active);
     box-shadow: none;
     transform: none;
 }
 
 .button:active:focus {
-    background-color: var(--color-active);
     box-shadow: var(--ring-shadow);
     transform: none;
 }
 
 .button:hover:focus {
-    background-color: var(--color-primary);
     box-shadow: var(--ring-shadow);
     transform: none;
 }
 
 .button_view_primary {
     background-color: var(--color-primary);
-    color: #fff;
+    color: var(--color-secondary);
+}
+
+.button_view_primary:hover {
+    background-color: var(--button-color-hover);
+}
+
+.button_view_primary:active {
+    background-color: var(--button-color-active);
+}
+
+.button_view_primary:focus {
+    box-shadow: var(--button-color-shadow-primary);
+}
+
+.button_view_primary:hover:focus {
+    background-color: var(--button-color-hover);
+    box-shadow: var(--button-color-shadow-primary);
+}
+
+.button_view_primary:active:focus {
+    background-color: var(--button-color-active);
+    box-shadow: var(--button-shadow-primary);
 }
 
 .button_view_secondary {
     background-color: var(--color-secondary);
+    color: var(--color-additional);
+}
+
+.button_view_secondary:hover {
+    color: var(--button-color-hover);
+}
+
+.button_view_secondary:active {
+    color: var(--button-color-active);
+}
+
+.button_view_secondary:focus {
+    box-shadow: var(--button-shadow-secondary-still);
+}
+
+.button_view_secondary:hover:focus {
+    box-shadow: var(--button-shadow-secondary-hover);
+}
+
+.button_view_secondary:active:focus {
+    box-shadow: var(--button-shadow-secondary-active);
 }
 
 .button_size_s {

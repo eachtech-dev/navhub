@@ -13,3 +13,18 @@ button:
     l:
       height:
         value: 63px
+  color:
+    hover:
+      value: '#FFAA7A'
+    active:
+      value: '#E18A5A'
+  shadow:
+    primary:
+      value: '0 0 0 4px var(--color-secondary)'
+    secondary:
+      still:
+        value: '0 0 0 4px var(--color-additional)'
+      hover:
+        value: '0 0 0 4px var(--button-color-hover)'
+      active:
+        value: '0 0 0 4px var(--button-color-active)'

@@ -2,8 +2,8 @@ color:
   primary:
     value: '#F4915A'
   secondary:
+    value: '#FFFFFF'
+  additional:
     value: '#5D737E'
-  hover:
-    value: '#FFAA7A'
-  active:
-    value: '#E18A5A'
+
+  
