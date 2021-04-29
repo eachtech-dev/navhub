@@ -39,6 +39,11 @@ Secondary.args = {
     view: 'secondary',
 };
 
+export const Play = Template.bind({});
+Play.args = {
+    view: 'play',
+};
+
 export const Large = Template.bind({});
 Large.args = {
     size: 'l',

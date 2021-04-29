@@ -6,7 +6,7 @@ import Button from 'components/button';
 const Home: NextPage = () => {
     return (
         <Button view="primary" size="m">
-            Click me!
+            Стать участником
         </Button>
     );
 };
