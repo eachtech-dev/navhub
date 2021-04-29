@@ -4,9 +4,9 @@
     align-items: center;
     justify-content: center;
     padding: var(--button-padding);
-    font: var(--typography-button-shorthand);
     border: none;
     border-radius: var(--button-radius);
+    font: var(--typography-button-shorthand);
     outline: none;
     transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
@@ -23,17 +23,17 @@
 }
 
 button svg {
+    width: 100%;
+    height: auto;
     fill: rgb(88, 88, 88);
-    margin:auto;
-    width: 100%; height: auto;
 }
 
-button:hover svg{
+button:hover svg {
     fill: var(--button-color-hover);
 }
 
-button:active svg{
-    fill: var(--button-color-active)
+button:active svg {
+    fill: var(--button-color-active);
 }
 
 .button:active {
@@ -101,25 +101,25 @@ button:active svg{
     box-shadow: var(--button-shadow-secondary-active);
 }
 
-.button_view_play{
-    background-color: var(--color-secondary);
-    height: var(--button-size-l);
+.button_view_play {
     width: var(--button-size-l);
+    height: var(--button-size-l);
+    background-color: var(--color-secondary);
     text-align: right;
-
 }
 
-.button_view_play:focus{
-    box-shadow: var(--button-shadow-secondary-still);  
+.button_view_play:focus {
+    box-shadow: var(--button-shadow-secondary-still);
 }
 
-.button_view_play:hover:focus{
+.button_view_play:hover:focus {
     box-shadow: var(--button-shadow-secondary-hover);
 }
 
-.button_view_play:active:focus{
-    box-shadow: var(--button-shadow-secondary-active); 
+.button_view_play:active:focus {
+    box-shadow: var(--button-shadow-secondary-active);
 }
+
 .button_size_s {
     --button-height: var(--button-size-s-height);
 }
