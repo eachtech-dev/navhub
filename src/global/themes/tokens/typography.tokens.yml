@@ -1,4 +1,92 @@
 typography:
   font:
     family:
-      value: "Roboto, 'Segoe UI', sans-serif"
+      value: "Nunito, 'Segoe UI', sans-serif"
+    style:
+      value: normal
+    size:
+      l:
+       value: 32px
+      m:
+        value: 24px
+      s:
+        value: 18px
+    weight:
+      bold:
+        value: 700
+      semibold:
+        value: 600
+      regular:
+        value: 400 
+  heading1:
+    font:
+      family:
+        value: var(--typography-font-family)
+      style:
+        value: var(--typography-font-style)
+      weight:
+        value: var(--typography-font-weight-bold)
+      size:
+        value: var(--typography-font-size-m)
+      shorthand:
+        value: var(--typography-heading1-font-family) var(--typography-heading1-font-style) var(--typography-heading1-font-weight) var(--typography-heading1-font-size) var()
+    color:
+        value: var(--color-secondary)
+  heading2:
+    font:
+      family:
+        value: var(--typography-font-family)
+      style:
+        value: var(--typography-font-style)
+      weight:
+        value: var(--typography-font-weight-bold)
+      size:
+        value: var(--typography-font-size-l)
+      shorthand: 
+        value: var(--typography-heading2-font-family) var(--typography-heading2-font-style) var(--typography-heading2-font-weight) var(--typography-heading2-font-size)
+    color: 
+      value: var(--color-secondary)
+  heading3:
+    font:
+      family:
+        value: var(--typography-font-family)
+      style:
+        value: var(--typography-font-style)
+      weight:
+        value: var(--typography-font-weight-semibold)
+      size:
+        value: var(--typography-font-size-m)
+      shorthand:
+        value: var(--typography-heading3-font-family) var(--typography-heading3-font-style) var(--typography-heading3-font-weight) var(--typography-heading3-font-size)
+    color:
+      value: var(--color-secondary)
+  paragraph:
+    font:
+      family:
+        value: var(--typography-font-family)
+      style:
+        value: var(--typography-font-style)
+      weight:
+        value: var(--typography-font-weight-regular)
+      size:
+        value: var(--typography-font-size-s)
+      shorthand:
+        value: var(--typography-paragraph-font-family) var(--typography-paragraph-font-style) var(--typography-paragraph-font-weight) var(--typography-paragraph-font-size)
+    color: 
+      value: var(--color-secondary)
+  button:
+    font:
+      family:
+        value: var(--typography-font-family)
+      style:
+        value: var(--typography-font-style)
+      weight:
+        value: var(--typography-font-weight-bold)
+      size:
+        value: var(--typography-font-size-s)
+      shorthand:
+        value: var(--typography-button-font-family) var(--typography-button-font-style) var(--typography-button-font-weight) var(--typography-button-font-size)
+    color:
+      value: var(--color-secondary)
+  
+  
