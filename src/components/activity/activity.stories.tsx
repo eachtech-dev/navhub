@@ -13,7 +13,11 @@ export default {
         title: { control: 'text', defaultValue: 'Hello world!' },
         description: {
             control: 'text',
-            defaultValue: 'Lorem ipsum dolore sit amet',
+            defaultValue: `
+            <h1>Hello world!</h1>
+            <p>Lorem ipsum dolore sit amet</p>
+            <p>Lorem ipsum dolore sit amet</p>
+            `,
         },
         primaryText: {
             control: 'text',

@@ -16,7 +16,7 @@ export const cnActivity = cn('activity', styles);
 
 export type TActivityProps = TActivity & HTMLProps<HTMLDivElement>;
 
-const tagsInText: (keyof ReactHTML)[] = ['b', 'strong', 'p'];
+const tagsInText: (keyof ReactHTML)[] = ['b', 'strong', 'p', 'h1', 'h2'];
 
 type TChunkRenderers = Record<string, ReturnType<typeof renderNodeInTag>>;
 
@@ -46,9 +46,6 @@ const Activity: FC<TActivityProps> = ({
         >
             <div className={cnActivity('content')}>
                 <div className={cnActivity('description')}>
-                    <h1>
-                        <FormattedMessage id={`${prefix}.title`} />
-                    </h1>
                     <div>
                         <FormattedMessage
                             id={`${prefix}.description`}
