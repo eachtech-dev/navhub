@@ -9,7 +9,7 @@ import { TTranslations } from 'types/translations';
 import Button from 'components/button';
 import Sidenav from 'components/sidenav';
 
-const Home: NextPage = () => {
+const Home = () => {
     return (
         <Sidenav>
             <Sidenav.Aside>
@@ -29,7 +29,10 @@ const Home: NextPage = () => {
 export const getStaticProps: GetStaticProps = async () => {
     const translations = await fetch<TTranslations>('/translations');
 
-    return { revalidate: config.next.revalidate, props: { translations } };
+    return {
+        revalidate: config.next.revalidate,
+        props: { translations },
+    };
 };
 
 export default Home;

@@ -1,0 +1,19 @@
+activity:
+  preview:
+    height:
+      value: 192px
+  actions:
+    margin:
+      value: 20px;
+    spacer:
+      value: 20px;
+  overlay:
+    default:
+      background:
+        value: rgba(51, 51, 51, 0.8)
+    hover:
+      background:
+        value: rgba(51, 51, 51, 0.65)
+    active:
+      background:
+        value: rgba(51, 51, 51, 0.8)
