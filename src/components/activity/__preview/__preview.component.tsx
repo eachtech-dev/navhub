@@ -24,7 +24,9 @@ const ActivityPreview: FC<TActivityPreview> = ({
             className={classnames(cnActivity('preview'), className)}
         >
             <img alt="" src={imageSrc} className={cnActivity('image')} />
-            <button className={cnActivity('overlay')}>
+            <button
+                className={cnActivity('overlay', { active: Boolean(videoSrc) })}
+            >
                 {videoSrc && null /* TODO: open video modal */}
             </button>
         </div>

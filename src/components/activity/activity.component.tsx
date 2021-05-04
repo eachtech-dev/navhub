@@ -29,6 +29,7 @@ const chunksRenderers = tagsInText.reduce<TChunkRenderers>(
 );
 
 const Activity: FC<TActivityProps> = ({
+    style,
     className,
     primaryLink,
     imageSrc,
@@ -42,7 +43,7 @@ const Activity: FC<TActivityProps> = ({
         <div
             {...props}
             className={classnames(cnActivity(), className)}
-            style={{ backgroundColor }}
+            style={{ backgroundColor, ...style }}
         >
             <div className={cnActivity('content')}>
                 <div className={cnActivity('description')}>

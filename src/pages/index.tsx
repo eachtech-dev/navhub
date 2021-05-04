@@ -28,9 +28,11 @@ const Home: NextPage<THomeProps> = ({ activities }) => {
             </Sidenav.Aside>
             <main>
                 <Sidenav.Open />
-                {activities.map((activity) => (
-                    <Activity key={activity.id} {...activity} />
-                ))}
+                <section>
+                    {activities.map((activity) => (
+                        <Activity key={activity.id} {...activity} />
+                    ))}
+                </section>
             </main>
         </Sidenav>
     );

@@ -1,11 +1,11 @@
 .activity {
     overflow: hidden;
     width: 100%;
-    border-radius: 25px;
-}
+    border-radius: var(--activity-border-radius);
 
-.activity:not(:first-child) {
-    margin-top: -25px;
+    /* will-change creates a new stacking context (otherwise all backgrounds
+    will be rendered on one layer, and all images on the next, making them overlap) */
+    will-change: opacity;
 }
 
 .activity__content {
@@ -15,11 +15,11 @@
     max-width: 1128px;
     flex-flow: row nowrap;
     margin: 0 auto;
-    border-radius: 25px;
+    border-radius: var(--activity-border-radius);
 }
 
-.activity:not(:last-child) .activity__content {
-    padding-bottom: 85px;
+.activity:not(:first-child) {
+    margin-top: calc(var(--activity-border-radius) * -2);
 }
 
 .activity:nth-child(odd) .activity__content {
@@ -30,8 +30,20 @@
     display: flex;
     flex: 1 0;
     flex-flow: column nowrap;
-    padding: 60px;
+    padding: var(--activity-padding-desktop);
     color: var(--typography-font-color);
+}
+
+.activity:not(:last-child) .activity__description {
+    padding-bottom: calc(var(--activity-padding-desktop) + var(--activity-border-radius) * 2);
+}
+
+.activity:nth-child(odd) .activity__description {
+    padding-right: 100px;
+}
+
+.activity:nth-child(even) .activity__description {
+    padding-left: 100px;
 }
 
 .activity__description h1 {
@@ -45,14 +57,6 @@
 .activity__description p {
     margin-top: 15px;
     font: var(--typography-paragraph-font-shorthand);
-}
-
-.activity:nth-child(odd) .activity__description {
-    padding-right: 100px;
-}
-
-.activity:nth-child(even) .activity__description {
-    padding-left: 100px;
 }
 
 .activity__preview {
@@ -85,13 +89,13 @@
     outline: none;
 }
 
-.activity__overlay:hover {
+.activity__overlay_active:hover {
     --activity-overlay-background: var(--activity-overlay-hover-background);
 
     cursor: pointer;
 }
 
-.activity__overlay:active {
+.activity__overlay_active:active {
     --activity-overlay-background: var(--activity-overlay-active-background);
 }
 
@@ -118,33 +122,13 @@
     }
 
     .activity .activity__description[class] {
-        padding: 20px 10px;
+        padding:
+            var(--activity-padding-mobile)
+            calc(var(--activity-padding-mobile) / 2);
     }
 
-    .activity__preview {
-        height: var(--activity-preview-height);
-        flex: unset;
-    }
-
-    .activity__actions {
-        display: flex;
-        flex-flow: column nowrap;
-        align-items: center;
-    }
-}
-
-@media screen and (max-width: 764px) {
-    .activity .activity__content[class] {
-        width: 100%;
-        flex-flow: column-reverse nowrap;
-        align-items: center;
-        margin: 0 auto;
-        border-radius: 25px;
-        text-align: center;
-    }
-
-    .activity .activity__description[class] {
-        padding: 20px 10px;
+    .activity:not(:last-child) .activity__description[class] {
+        padding-bottom: calc(var(--activity-padding-mobile) + var(--activity-border-radius) * 2);
     }
 
     .activity__preview {

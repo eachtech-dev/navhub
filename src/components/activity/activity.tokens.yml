@@ -1,4 +1,12 @@
 activity:
+  border:
+    radius:
+      value: 25px
+  padding:
+    desktop:
+      value: 60px
+    mobile:
+      value: 20px
   preview:
     height:
       value: 192px
