@@ -1,4 +1,7 @@
+import { Flavor } from './util';
+
 export type TActivity = {
+    id: Flavor<string, 'activity'>;
     backgroundColor: string;
     imageSrc?: string;
     videoSrc?: string;

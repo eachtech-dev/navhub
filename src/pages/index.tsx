@@ -4,12 +4,19 @@ import { GetStaticProps, NextPage } from 'next';
 
 import { fetch } from 'utils/fetch';
 import { config } from 'utils/config';
+
+import { TActivity } from 'types/activity';
 import { TTranslations } from 'types/translations';
 
 import Button from 'components/button';
 import Sidenav from 'components/sidenav';
+import Activity from 'components/activity';
 
-const Home = () => {
+export type THomeProps = {
+    activities: TActivity[];
+};
+
+const Home: NextPage<THomeProps> = ({ activities }) => {
     return (
         <Sidenav>
             <Sidenav.Aside>
@@ -21,6 +28,9 @@ const Home = () => {
             </Sidenav.Aside>
             <main>
                 <Sidenav.Open />
+                {activities.map((activity) => (
+                    <Activity key={activity.id} {...activity} />
+                ))}
             </main>
         </Sidenav>
     );
@@ -28,10 +38,11 @@ const Home = () => {
 
 export const getStaticProps: GetStaticProps = async () => {
     const translations = await fetch<TTranslations>('/translations');
+    const activities = await fetch<TActivity[]>('/activities');
 
     return {
         revalidate: config.next.revalidate,
-        props: { translations },
+        props: { translations, activities },
     };
 };
 

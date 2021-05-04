@@ -2,8 +2,9 @@ import React from 'react';
 import { IntlProvider } from 'react-intl';
 import { Story, Meta } from '@storybook/react';
 
-import Activity from './activity.component';
 import { TActivity } from 'types/activity';
+
+import Activity from './activity.component';
 
 export default {
     title: 'Components/Activity',
