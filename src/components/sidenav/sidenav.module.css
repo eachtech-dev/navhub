@@ -34,6 +34,7 @@
         will-change: transform;
     }
 
+    .sidenav_open .sidenav__aside,
     .sidenav__aside:target {
         transform: translateX(0);
         transition: transform var(--duration) ease;

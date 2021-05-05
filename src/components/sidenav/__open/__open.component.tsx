@@ -1,4 +1,4 @@
-import React, { FC, HTMLProps, useContext } from 'react';
+import React, { FC, HTMLProps, useCallback, useContext } from 'react';
 
 import { classnames } from '@bem-react/classnames';
 
@@ -9,16 +9,32 @@ import { cnSidenav } from '../sidenav.component';
 export type TSidenavOpenProps = Omit<HTMLProps<HTMLAnchorElement>, 'id'>;
 
 const SidenavOpen: FC<TSidenavOpenProps> = ({
+    onClick,
     children,
     className,
     ...props
 }) => {
-    const { id, openLabel } = useContext(SidenavContext);
+    const { id, open, openLabel } = useContext(SidenavContext);
+
+    const handleClick = useCallback(
+        (e) => {
+            onClick && onClick(e);
+
+            if (!open) {
+                return;
+            }
+
+            e.preventDefault();
+            open();
+        },
+        [open, onClick],
+    );
 
     return (
         <a
             className={classnames(cnSidenav('open'), className)}
             title={openLabel}
+            onClick={handleClick}
             aria-label={openLabel}
             id={`${id}-button`}
             href={`#${id}-open`}

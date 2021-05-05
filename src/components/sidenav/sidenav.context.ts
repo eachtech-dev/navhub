@@ -2,6 +2,8 @@ import React from 'react';
 
 export type TSidenavContext = {
     id?: string;
+    open?: () => void;
+    close?: () => void;
     openLabel: string;
     closeLabel: string;
 };
