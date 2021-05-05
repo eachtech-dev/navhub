@@ -2,11 +2,11 @@ import React, { FC, HTMLProps } from 'react';
 import { classnames } from '@bem-react/classnames';
 
 import { cn } from 'utils/cn';
+import Logo from 'components/logo';
 
 import Item from './__item';
 
 import styles from './menu.module.css';
-import Logo from 'components/logo';
 
 export const cnMenu = cn('menu', styles);
 
@@ -25,7 +25,7 @@ const Menu: TMenuStaticProps & FC<TMenuProps> = ({
         <nav {...props} className={classnames(cnMenu(), className)}>
             <div className={cnMenu('content')}>
                 <Logo className={cnMenu('logo')} />
-                <li className={cnMenu('list')}>{children}</li>
+                <ul className={cnMenu('list')}>{children}</ul>
             </div>
         </nav>
     );
