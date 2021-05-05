@@ -2,7 +2,7 @@ import React, { FC, SVGProps } from 'react';
 
 export type TCollapseProps = SVGProps<SVGSVGElement>;
 
-const Collapse: FC<TCollapseProps> = (props) => {
+const Collapse: FC<TCollapseProps> = ({ style, ...props }) => {
     return (
         <svg
             width="25"
@@ -10,6 +10,7 @@ const Collapse: FC<TCollapseProps> = (props) => {
             viewBox="0 0 25 18"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
+            style={{ marginTop: 3, ...style }}
             {...props}
         >
             <path
