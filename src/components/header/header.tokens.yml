@@ -1,0 +1,8 @@
+header:
+  height:
+    value: 70px
+  margin:
+    value: 28px
+  transition:
+    duration:
+      value: 0.25s

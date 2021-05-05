@@ -8,6 +8,7 @@ const Logo: FC<TLogoProps> = (props) => {
             width="159"
             height="36"
             fill="none"
+            viewBox="0 0 159 36"
             xmlns="http://www.w3.org/2000/svg"
             {...props}
         >

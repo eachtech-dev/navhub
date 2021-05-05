@@ -15,6 +15,9 @@ import Menu, { cnMenu } from 'components/menu';
 
 import withNavigation from 'hocs/with-navigation';
 import useSmoothScroll from 'hooks/use-smooth-scroll';
+import Header from 'components/header';
+import Logo from 'components/logo';
+import Collapse from 'components/collapse';
 
 const ActivityWithNavigation = withNavigation(Activity);
 
@@ -50,7 +53,12 @@ const Home: NextPage<THomeProps> = ({ activities }) => {
                     </Menu>
                 </Sidenav.Aside>
                 <main>
-                    <Sidenav.Open />
+                    <Header>
+                        <Sidenav.Open>
+                            <Collapse />
+                        </Sidenav.Open>
+                        <Logo width={110} height={25} />
+                    </Header>
                     <section>
                         {activities.map((activity) => (
                             <ActivityWithNavigation
