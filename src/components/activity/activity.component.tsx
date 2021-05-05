@@ -1,4 +1,4 @@
-import React, { FC, HTMLProps, ReactHTML } from 'react';
+import React, { HTMLProps, ReactHTML } from 'react';
 import { FormattedMessage } from 'react-intl';
 
 import { classnames } from '@bem-react/classnames';
@@ -28,41 +28,49 @@ const chunksRenderers = tagsInText.reduce<TChunkRenderers>(
     {},
 );
 
-const Activity: FC<TActivityProps> = ({
-    style,
-    className,
-    primaryLink,
-    imageSrc,
-    videoSrc,
-    backgroundColor,
-    secondaryLinks = [],
-    translationsPrefix: prefix,
-    ...props
-}) => {
-    return (
-        <div
-            {...props}
-            className={classnames(cnActivity(), className)}
-            style={{ backgroundColor, ...style }}
-        >
-            <div className={cnActivity('content')}>
-                <div className={cnActivity('description')}>
-                    <div>
-                        <FormattedMessage
-                            id={`${prefix}.description`}
-                            values={chunksRenderers}
+const Activity = React.forwardRef<HTMLDivElement, TActivityProps>(
+    (
+        {
+            style,
+            className,
+            primaryLink,
+            imageSrc,
+            videoSrc,
+            backgroundColor,
+            secondaryLinks = [],
+            translationsPrefix: prefix,
+            ...props
+        },
+        ref,
+    ) => {
+        return (
+            <div
+                {...props}
+                ref={ref}
+                className={classnames(cnActivity(), className)}
+                style={{ backgroundColor, ...style }}
+            >
+                <div className={cnActivity('content')}>
+                    <div className={cnActivity('description')}>
+                        <div>
+                            <FormattedMessage
+                                id={`${prefix}.description`}
+                                values={chunksRenderers}
+                            />
+                        </div>
+                        <ActivityActions
+                            prefix={prefix}
+                            primaryLink={primaryLink}
+                            secondaryLinks={secondaryLinks}
                         />
                     </div>
-                    <ActivityActions
-                        prefix={prefix}
-                        primaryLink={primaryLink}
-                        secondaryLinks={secondaryLinks}
-                    />
+                    <ActivityPreview imageSrc={imageSrc} videoSrc={videoSrc} />
                 </div>
-                <ActivityPreview imageSrc={imageSrc} videoSrc={videoSrc} />
             </div>
-        </div>
-    );
-};
+        );
+    },
+);
+
+Activity.displayName = 'Activity';
 
 export default Activity;

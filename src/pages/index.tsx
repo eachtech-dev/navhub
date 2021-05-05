@@ -8,33 +8,61 @@ import { config } from 'utils/config';
 import { TActivity } from 'types/activity';
 import { TTranslations } from 'types/translations';
 
-import Button from 'components/button';
 import Sidenav from 'components/sidenav';
 import Activity from 'components/activity';
+import Navigator from 'components/navigator';
+import Menu, { cnMenu } from 'components/menu';
+
+import withNavigation from 'hocs/with-navigation';
+import useSmoothScroll from 'hooks/use-smooth-scroll';
+
+const ActivityWithNavigation = withNavigation(Activity);
 
 export type THomeProps = {
     activities: TActivity[];
 };
 
 const Home: NextPage<THomeProps> = ({ activities }) => {
+    const handleSmoothScroll = useSmoothScroll<HTMLAnchorElement>();
+
     return (
-        <Sidenav>
-            <Sidenav.Aside>
-                <nav>
-                    <Button view="primary" size="m">
-                        <FormattedMessage id="index.header" />
-                    </Button>
-                </nav>
-            </Sidenav.Aside>
-            <main>
-                <Sidenav.Open />
-                <section>
-                    {activities.map((activity) => (
-                        <Activity key={activity.id} {...activity} />
-                    ))}
-                </section>
-            </main>
-        </Sidenav>
+        <Navigator
+            threshold={1}
+            activeClassName={cnMenu('link', { active: true })}
+        >
+            <Sidenav>
+                <Sidenav.Aside>
+                    <Menu>
+                        {activities.map(({ id, translationsPrefix }) => {
+                            return (
+                                <Menu.Item key={id}>
+                                    <Navigator.Link
+                                        href={`#activity-${id}`}
+                                        onClick={handleSmoothScroll}
+                                    >
+                                        <FormattedMessage
+                                            id={`${translationsPrefix}.title`}
+                                        />
+                                    </Navigator.Link>
+                                </Menu.Item>
+                            );
+                        })}
+                    </Menu>
+                </Sidenav.Aside>
+                <main>
+                    <Sidenav.Open />
+                    <section>
+                        {activities.map((activity) => (
+                            <ActivityWithNavigation
+                                key={activity.id}
+                                {...activity}
+                                id={`activity-${activity.id}`}
+                            />
+                        ))}
+                    </section>
+                </main>
+            </Sidenav>
+        </Navigator>
     );
 };
 

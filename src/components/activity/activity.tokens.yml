@@ -1,4 +1,6 @@
 activity:
+  max-width:
+    value: 1280px
   border:
     radius:
       value: 25px

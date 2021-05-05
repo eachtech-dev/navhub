@@ -1,0 +1,10 @@
+menu:
+  width:
+    value: 280px
+  link:
+    line:
+      height:
+        value: 24px
+  list:
+    padding:
+      value: 32px
