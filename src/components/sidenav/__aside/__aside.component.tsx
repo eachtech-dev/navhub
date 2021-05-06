@@ -23,7 +23,7 @@ const SidenavAside: FC<TSidenavAsideProps> = ({
     className,
     ...props
 }) => {
-    const { id, closeLabel } = useContext(SidenavContext);
+    const { id, close, closeLabel } = useContext(SidenavContext);
 
     const defaultId = `${id}-open`;
 
@@ -38,7 +38,7 @@ const SidenavAside: FC<TSidenavAsideProps> = ({
         [id],
     );
 
-    const closeSidenav = useCallback((e: KeyboardEvent) => {
+    const handleKeyboardClose = useCallback((e: KeyboardEvent) => {
         if (e.code === 'Escape') {
             document.location.hash = '';
         }
@@ -51,17 +51,29 @@ const SidenavAside: FC<TSidenavAsideProps> = ({
         updateFocus(isOpen);
 
         if (isOpen) {
-            document.addEventListener('keyup', closeSidenav);
+            document.addEventListener('keyup', handleKeyboardClose);
         } else {
-            document.removeEventListener('keydown', closeSidenav);
+            document.removeEventListener('keydown', handleKeyboardClose);
         }
-    }, [idFromProps, defaultId, closeSidenav, updateFocus]);
+    }, [idFromProps, defaultId, handleKeyboardClose, updateFocus]);
 
     useEffect(() => {
         return () => {
-            document.removeEventListener('keyup', closeSidenav);
+            document.removeEventListener('keyup', handleKeyboardClose);
         };
-    }, [closeSidenav]);
+    }, [handleKeyboardClose]);
+
+    const handleClose = useCallback(
+        (e) => {
+            if (!close) {
+                return;
+            }
+
+            e.preventDefault();
+            close();
+        },
+        [close],
+    );
 
     return (
         <aside
@@ -73,6 +85,7 @@ const SidenavAside: FC<TSidenavAsideProps> = ({
             {children}
             <a // eslint-disable-line jsx-a11y/anchor-has-content, jsx-a11y/anchor-is-valid
                 href="#"
+                onClick={handleClose}
                 id={`${id}-close`}
                 className={cnSidenav('close')}
                 title={closeLabel}

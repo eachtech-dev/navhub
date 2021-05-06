@@ -1,4 +1,4 @@
-import React, { FC, HTMLProps } from 'react';
+import React, { FC, HTMLProps, useCallback, useState } from 'react';
 
 import { classnames } from '@bem-react/classnames';
 import { cn } from 'utils/cn';
@@ -30,9 +30,24 @@ const Sidenav: TSidenavStaticProps & FC<TSidenavProps> = ({
     className,
     ...props
 }) => {
+    const [isOpen, setIsOpen] = useState<boolean>(false);
+
+    const open = useCallback(() => {
+        setIsOpen(true);
+    }, [setIsOpen]);
+
+    const close = useCallback(() => {
+        setIsOpen(false);
+    }, [setIsOpen]);
+
     return (
-        <div {...props} className={classnames(cnSidenav(), className)}>
-            <SidenavContext.Provider value={{ id, openLabel, closeLabel }}>
+        <div
+            {...props}
+            className={classnames(cnSidenav({ open: isOpen }), className)}
+        >
+            <SidenavContext.Provider
+                value={{ id, open, close, openLabel, closeLabel }}
+            >
                 {children}
             </SidenavContext.Provider>
         </div>

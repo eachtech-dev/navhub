@@ -11,8 +11,9 @@
 }
 
 .sidenav__aside {
-    --duration: 0.6s;
+    --duration: 0.65s;
 
+    z-index: 100;
     display: grid;
     grid-template-columns: [nav] 2fr [escape] 1fr;
 }
@@ -33,6 +34,7 @@
         will-change: transform;
     }
 
+    .sidenav_open .sidenav__aside,
     .sidenav__aside:target {
         transform: translateX(0);
         transition: transform var(--duration) ease;

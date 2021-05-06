@@ -1,5 +1,7 @@
 import React, { FC, useCallback, useMemo, useState } from 'react';
 
+import { isServer } from 'utils/env';
+
 import NavigatorLink from './__link';
 
 import NavigatorContext from './navigator.context';
@@ -37,6 +39,10 @@ const Navigator: TNavigatorStaticProps & FC<TNavigatorProps> = ({
     );
 
     const observer = useMemo(() => {
+        if (isServer) {
+            return null;
+        }
+
         return new IntersectionObserver(callback, {
             ...defaultOptions,
             ...options,

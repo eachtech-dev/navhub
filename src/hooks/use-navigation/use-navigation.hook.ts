@@ -10,11 +10,13 @@ const useNavigation: TUseNavigation = (ref) => {
     const oldRef = useRef<typeof ref['current']>();
 
     useEffect(() => {
-        if (observer) {
-            ref.current && observer.observe(ref.current);
-
-            oldRef.current && observer.unobserve(oldRef.current);
+        if (!observer) {
+            return;
         }
+
+        ref.current && observer.observe(ref.current);
+
+        oldRef.current && observer.unobserve(oldRef.current);
     }, [observer, ref]);
 
     useEffect(() => {

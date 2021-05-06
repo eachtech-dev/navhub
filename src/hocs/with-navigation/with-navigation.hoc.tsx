@@ -4,13 +4,13 @@ import React, {
     ReactHTML,
     useEffect,
     useRef,
+    HTMLProps,
 } from 'react';
 
 import useNavigation from 'hooks/use-navigation';
 
 export type TWithNavigation = <
-    T extends { ref?: MutableRefObject<P | null> },
-    P extends HTMLElement
+    T extends { ref?: HTMLProps<HTMLElement>['ref'] }
 >(
     Component: ComponentType<T> | keyof ReactHTML,
 ) => typeof Component;
@@ -25,7 +25,14 @@ const withNavigation: TWithNavigation = (Component) => {
         useNavigation(ref);
 
         useEffect(() => {
-            if (refFromProps) {
+            if (!refFromProps || typeof refFromProps === 'string') {
+                return;
+            }
+
+            if (typeof refFromProps === 'function') {
+                refFromProps(ref.current);
+            } else {
+                // @ts-expect-error read-only ref
                 refFromProps.current = ref.current;
             }
         }, [ref, refFromProps]);

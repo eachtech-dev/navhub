@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import { Story, Meta } from '@storybook/react';
 
 import { cn } from 'utils/cn';
@@ -6,6 +6,7 @@ import { cn } from 'utils/cn';
 import Sidenav from 'components/sidenav';
 
 import withNavigation from 'hocs/with-navigation';
+import useSmoothScroll from 'hooks/use-smooth-scroll';
 
 import Navigator from './navigator.component';
 
@@ -21,23 +22,8 @@ export default {
 const DivWithNavigation = withNavigation('div');
 
 const Template: Story = () => {
-    const smoothScroll = useCallback(
-        (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
-            e.preventDefault();
+    const handleSmoothScroll = useSmoothScroll<HTMLAnchorElement>();
 
-            const target = e.target as HTMLAnchorElement;
-            const href = target.getAttribute('href');
-
-            if (!href) {
-                return;
-            }
-
-            document.querySelector(href)?.scrollIntoView({
-                behavior: 'smooth',
-            });
-        },
-        [],
-    );
     return (
         <Navigator
             activeClassName={cnNavigatorStories('link', { active: true })}
@@ -48,21 +34,21 @@ const Template: Story = () => {
                         <nav className={cnNavigatorStories('nav')}>
                             <Navigator.Link
                                 href="#article-1"
-                                onClick={smoothScroll}
+                                onClick={handleSmoothScroll}
                                 className={cnNavigatorStories('link')}
                             >
                                 Article 1
                             </Navigator.Link>
                             <Navigator.Link
                                 href="#article-2"
-                                onClick={smoothScroll}
+                                onClick={handleSmoothScroll}
                                 className={cnNavigatorStories('link')}
                             >
                                 Article 2
                             </Navigator.Link>
                             <Navigator.Link
                                 href="#article-3"
-                                onClick={smoothScroll}
+                                onClick={handleSmoothScroll}
                                 className={cnNavigatorStories('link')}
                             >
                                 Article 3
